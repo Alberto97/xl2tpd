@@ -233,7 +233,7 @@ int add_txspeed_avp (struct buffer *buf, int speed)
 int add_rxspeed_avp (struct buffer *buf, int speed)
 {
     struct half_words *ptr = (struct half_words *) (buf->start + buf->len + sizeof(struct avp_hdr));
-    add_nonmandatory_header(buf, 0xA, 0x26);
+    add_header(buf, 0xA, 0x26);
     ptr->s0 = htons ((speed >> 16) & 0xFFFF);
     ptr->s1 = htons (speed & 0xFFFF);
     buf->len += 0xA;
